@@ -1,18 +1,20 @@
 "use client";
 
 import Image from "next/image";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 import { Input } from "../ui/input";
 
 interface Props {
-  routeType: string;
+  routeType: string | undefined;
 }
 
 function Searchbar({ routeType }: Props) {
   const router = useRouter();
   const [search, setSearch] = useState("");
+  const pathname = usePathname();
+
 
   // query after 0.3s of no input
   useEffect(() => {
@@ -41,7 +43,7 @@ function Searchbar({ routeType }: Props) {
         value={search}
         onChange={(e) => setSearch(e.target.value)}
         placeholder={`${
-          routeType !== "/search" ? "Search communities" : "Search creators"
+          pathname === "/search" ? "Search Users" : "Search Communities"
         }`}
         className='no-focus searchbar_input'
       />

@@ -12,6 +12,7 @@ async function Page({
 }: {
   searchParams: { [key: string]: string | undefined };
 }) {
+
   const user = await currentUser();
   if (!user) return null;
 
