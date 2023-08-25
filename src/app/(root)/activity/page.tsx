@@ -6,11 +6,6 @@ import { redirect } from "next/navigation";
 import Image from "next/image";
 
 
-
-
-    
-
-
 const Page = async () => {
   const user = await currentUser();
   if (!user) return null;
